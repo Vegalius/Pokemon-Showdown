@@ -18,7 +18,6 @@ let Formats = [
 		searchShow: true,
 		ruleset: ['Sleep Clause Mod', 'Species Clause', 'OHKO Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Pokemon', 'Standard', 'Team Preview'],
 		banlist: ['Uber', 'Stealth Rock', 'Spikes', 'Toxic Spikes', 'Sticky Web', 'Landorus-Therian', 'Finneon', 'Diglett', 'Dugtrio', 'Trapinch', 'Aegislash+Kings Shield', 'Kangaskhan-Mega+Seismic Toss', 'Landorus+Sheer Force', 'Toxapex+Regenerator'],
-		desc: "Prevents teams from having more than one Pok&eacute;mon from the same tier",
 	},
 	{
 		name: "[Gen 7] Six Pack",

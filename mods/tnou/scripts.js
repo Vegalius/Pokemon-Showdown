@@ -33,7 +33,7 @@ let BattleScripts = {
 		this.modData('Pokedex', 'rotom').abilities['1'] = 'Adaptability';
 		this.modData('Pokedex', 'rotomwash').abilities['1'] = 'Drizzle';
 		this.modData('Pokedex', 'rotomheat').abilities['1'] = 'Drought';
-		this.modData('Pokedex', 'rotomfan').abilities['1'] = 'Aerialate';
+		this.modData('Pokedex', 'rotomfan').abilities['1'] = 'Aerilate';
 		this.modData('Pokedex', 'rotomfrost').abilities['1'] = 'Refridgerate';
 
 		// Rotom Mow NOTE: To Be Fair, this Pokemon should have a different ability,

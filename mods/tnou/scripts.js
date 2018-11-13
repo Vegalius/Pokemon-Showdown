@@ -5,25 +5,29 @@ let BattleScripts = {
 	init() {
 		// MEGA POKEMON ABILITY MODS
 		this.modData('Pokedex', 'houndoommega').abilities['0'] = 'Sheer Force';
-		this.modData('Pokedex', 'audinomega').abilities['1'] = 'Regenerator';
-		this.modData('Pokedex', 'steelixmega').abilities['1'] = 'Solid Rock';
-		this.modData('Pokedex', 'slowbromega').abilities['1'] = 'Regenerator';
+		this.modData('Pokedex', 'audinomega').abilities['0'] = 'Regenerator';
+		this.modData('Pokedex', 'steelixmega').abilities['0'] = 'Solid Rock';
+		this.modData('Pokedex', 'slowbromega').abilities['0'] = 'Regenerator';
 
 		// OTHER POKEMON ABILITY MODS
-		this.modData('Pokedex', 'golisopod').abilities['1'] = 'Swift Swim';
-		this.modData('Pokedex', 'golisopod').abilities['2'] = 'Intimidate';
-		this.modData('Pokedex', 'volcanion').abilities['2'] = 'Chlorophyll';
-		this.modData('Pokedex', 'rapidash').abilities['1'] = 'Chlorophyll';
-		this.modData('Pokedex', 'moltres').abilities['2'] = 'Chlorophyll';
+		this.modData('Pokedex', 'golisopod').abilities['0'] = 'Swift Swim';
+		this.modData('Pokedex', 'golisopod').abilities['1'] = 'Intimidate';
+		this.modData('Pokedex', 'volcanion').abilities['1'] = 'Chlorophyll';
+		this.modData('Pokedex', 'rapidash').abilities['0'] = 'Chlorophyll';
+		this.modData('Pokedex', 'moltres').abilities['1'] = 'Chlorophyll';
 		this.modData('Pokedex', 'oddish').abilities['H'] = 'Regenerator';
 		this.modData('Pokedex', 'gloom').abilities['H'] = 'Regenerator';
-		this.modData('Pokedex', 'vileplume').abilities['2'] = 'Regenerator';
+		this.modData('Pokedex', 'vileplume').abilities['H'] = 'Regenerator';
 		this.modData('Pokedex', 'bellossom').abilities['H'] = 'Regenerator';
-		this.modData('Pokedex', 'slaking').abilities['1'] = 'Scrappy';
+		this.modData('Pokedex', 'slaking').abilities['0'] = 'Scrappy';
 		this.modData('Pokedex', 'archeops').abilities['0'] = 'Aerialate';
-
 		// Zen Mode Darmanitan with Magic Guard: Needs Some Code Research
 		// this.modData('Pokedex', 'darmanitanzen').abilities['H'] = 'magicguard';
+
+		// Archeops Suspect Test
+		this.modData('Pokedex', 'archeops').abilities['1'] = 'Gale Wings';
+		this.modData('Pokedex', 'archeops').abilities['H'] = 'Mold Breaker';
+		this.modData('Learnsets', 'archeops').learnset.drillpeck = ['7L100'];
 
 		// ROTOM FORME ABILITY MODS
 		this.modData('Pokedex', 'rotom').abilities['1'] = 'Adaptability';

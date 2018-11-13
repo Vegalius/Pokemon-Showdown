@@ -11,14 +11,23 @@ let Formats = [
 	{
 		section: "Premier Exclusives",
 	},
+	// Archeop Suspect Test
 	{
-		name: "[Gen 7] The New OU",
+		name: "[Gen 7] The New OU (Suspect)",
 		challengeShow: true,
 		mod: 'tnou',
 		searchShow: true,
 		ruleset: ['Sleep Clause Mod', 'Species Clause', 'OHKO Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Pokemon', 'Standard', 'Team Preview'],
 		banlist: ['Uber', 'Stealth Rock', 'Spikes', 'Toxic Spikes', 'Sticky Web', 'Landorus-Therian', 'Finneon', 'Diglett', 'Dugtrio', 'Trapinch', 'Aegislash+Kings Shield', 'Kangaskhan-Mega+Seismic Toss', 'Landorus+Sheer Force', 'Toxapex+Regenerator'],
 	},
+	// {
+	// 	name: "[Gen 7] The New OU",
+	// 	challengeShow: true,
+	// 	mod: 'tnou',
+	// 	searchShow: true,
+	// 	ruleset: ['Sleep Clause Mod', 'Species Clause', 'OHKO Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod', 'Pokemon', 'Standard', 'Team Preview'],
+	// 	banlist: ['Uber', 'Stealth Rock', 'Spikes', 'Toxic Spikes', 'Sticky Web', 'Landorus-Therian', 'Finneon', 'Diglett', 'Dugtrio', 'Trapinch', 'Aegislash+Kings Shield', 'Kangaskhan-Mega+Seismic Toss', 'Landorus+Sheer Force', 'Toxapex+Regenerator'],
+	// },
 	{
 		name: "[Gen 7] Six Pack",
 		desc: `An OU based metagame, but the player is limited to one Pok&eacute;mon from the same tier to encourage creativity.`,

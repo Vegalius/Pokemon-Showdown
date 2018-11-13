@@ -20,7 +20,7 @@ let BattleScripts = {
 		this.modData('Pokedex', 'vileplume').abilities['H'] = 'Regenerator';
 		this.modData('Pokedex', 'bellossom').abilities['H'] = 'Regenerator';
 		this.modData('Pokedex', 'slaking').abilities['0'] = 'Scrappy';
-		this.modData('Pokedex', 'archeops').abilities['0'] = 'Aerialate';
+		this.modData('Pokedex', 'archeops').abilities['0'] = 'Aerilate';
 		// Zen Mode Darmanitan with Magic Guard: Needs Some Code Research
 		// this.modData('Pokedex', 'darmanitanzen').abilities['H'] = 'magicguard';
 

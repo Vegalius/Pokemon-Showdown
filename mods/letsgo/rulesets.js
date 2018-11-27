@@ -14,11 +14,11 @@ let BattleFormats = {
 			let hasStarter = 0;
 			for (const set of team) {
 				if (set.species === 'Pikachu-Starter' || set.species === 'Eevee-Starter') {
+					hasStarter++;
 					if (hasStarter > 1) {
-						problems.push(`You can only have one of Pikachu-Starter and Eevee-Starter on a team.`);
+						problems.push(`You can only have one of Pikachu-Starter or Eevee-Starter on a team.`);
 						break;
 					}
-					hasStarter++;
 				}
 			}
 			return problems;
@@ -31,16 +31,15 @@ let BattleFormats = {
 			let allowCAP = !!(format && this.getRuleTable(format).has('allowcap'));
 
 			if (set.species === set.name) delete set.name;
-			if (((baseTemplate.num > 151 || baseTemplate.num < 1) && ![808, 809].includes(baseTemplate.num) &&
-				!['Alola', 'Mega', 'Mega-X', 'Mega-Y', 'Starter'].includes(template.forme)) || template.speciesid.endsWith('totem')) {
-				let usedSpecies = baseTemplate.species;
-				if (template.speciesid.endsWith('totem')) {
-					usedSpecies = template.species;
-				}
+			const validNum = (baseTemplate.num <= 151 && baseTemplate.num >= 1) || [808, 809].includes(baseTemplate.num);
+			if (!validNum) {
 				problems.push(
 					`Only Pok\u00E9mon whose base formes are from Gen 1, Meltan, and Melmetal can be used.`,
-					`(${usedSpecies} is from Gen ${baseTemplate.gen === 1 ? 7 : baseTemplate.gen}.)`
+					`(${set.species} is from Gen ${baseTemplate.gen === 1 ? 7 : baseTemplate.gen}.)`
 				);
+			}
+			if (template.forme && !['Alola', 'Mega', 'Mega-X', 'Mega-Y', 'Starter'].includes(template.forme)) {
+				problems.push(`${set.species}'s forme ${template.forme} is not available in Let's Go.`);
 			}
 			if (set.moves) {
 				for (const moveid of set.moves) {
@@ -66,7 +65,14 @@ let BattleFormats = {
 			}
 
 			if (!allowAVs && set.evs) {
+				const statNames = {hp: 'HP', atk: 'Attack', def: 'Defense', spa: 'Special Attack', spd: 'Special Defense', spe: 'Speed'};
 				for (let k in set.evs) {
+					// @ts-ignore
+					if (set.evs[k]) {
+						// @ts-ignore
+						problems.push(`${set.name || set.species} has ${set.evs[k]} AVs/EVs in ${statNames[k]}, but AVs and EVs not allowed in this format.`);
+						break;
+					}
 					// @ts-ignore
 					set.evs[k] = 0;
 				}
@@ -85,7 +91,9 @@ let BattleFormats = {
 			// Temporary hack to allow mega evolution
 			if (set.item) {
 				let item = this.getItem(set.item);
-				if (item.megaEvolves && item.megaEvolves !== template.baseSpecies) set.item = '';
+				if (item.megaEvolves !== template.baseSpecies) {
+					problems.push(`Items aren't allowed in Let's Go.`);
+				}
 			}
 
 			// Legendary Pokemon must have at least 3 perfect IVs in gen 6

@@ -3711,7 +3711,7 @@ let BattleMovedex = {
 		contestType: "Cool",
 	},
 	"doubleironbash": {
-		num: 544,
+		num: 742,
 		accuracy: 100,
 		basePower: 60,
 		category: "Physical",
@@ -8760,7 +8760,7 @@ let BattleMovedex = {
 		accuracy: true,
 		basePower: 0,
 		category: "Status",
-		desc: "The target immediately uses its last used move. Fails if the target has not made a move, if the move has 0 PP, if the target is preparing to use Beak Blast, Focus Punch, or Shell Trap, or if the move is Assist, Beak Blast, Belch, Bide, Copycat, Focus Punch, Ice Ball, Instruct, Me First, Metronome, Mimic, Mirror Move, Nature Power, Outrage, Petal Dance, Rollout, Shell Trap, Sketch, Sleep Talk, Struggle, Thrash, Transform, Uproar, any two-turn move, any recharge move, or any Z-Move.",
+		desc: "The target immediately uses its last used move. Fails if the target has not made a move, if the move has 0 PP, if the target is preparing to use Beak Blast, Focus Punch, or Shell Trap, or if the move is Assist, Beak Blast, Belch, Bide, Copycat, Focus Punch, Ice Ball, Instruct, King's Shield, Me First, Metronome, Mimic, Mirror Move, Nature Power, Outrage, Petal Dance, Rollout, Shell Trap, Sketch, Sleep Talk, Struggle, Thrash, Transform, Uproar, any two-turn move, any recharge move, or any Z-Move.",
 		shortDesc: "The target immediately uses its last used move.",
 		id: "instruct",
 		name: "Instruct",
@@ -8772,7 +8772,7 @@ let BattleMovedex = {
 			let lastMove = target.lastMove;
 			let moveIndex = target.moves.indexOf(lastMove.id);
 			let noInstruct = [
-				'assist', 'beakblast', 'bide', 'copycat', 'focuspunch', 'iceball', 'instruct', 'mefirst', 'metronome', 'mimic', 'mirrormove', 'naturepower', 'outrage', 'petaldance', 'rollout', 'shelltrap', 'sketch', 'sleeptalk', 'thrash', 'transform',
+				'assist', 'beakblast', 'bide', 'copycat', 'focuspunch', 'iceball', 'instruct', 'kingsshield', 'mefirst', 'metronome', 'mimic', 'mirrormove', 'naturepower', 'outrage', 'petaldance', 'rollout', 'shelltrap', 'sketch', 'sleeptalk', 'thrash', 'transform',
 			];
 			if (noInstruct.includes(lastMove.id) || lastMove.isZ || lastMove.flags['charge'] || lastMove.flags['recharge'] || target.volatiles['beakblast'] || target.volatiles['focuspunch'] || target.volatiles['shelltrap'] || (target.moveSlots[moveIndex] && target.moveSlots[moveIndex].pp <= 0)) {
 				return false;
@@ -14203,8 +14203,11 @@ let BattleMovedex = {
 		name: "Sappy Seed",
 		pp: 15,
 		priority: 0,
-		volatileStatus: 'leechseed',
 		flags: {protect: 1, reflectable: 1},
+		onHit: function (target, source) {
+			if (target.hasType('Grass')) return null;
+			target.addVolatile('leechseed', source);
+		},
 		secondary: null,
 		target: "normal",
 		type: "Grass",
@@ -16016,16 +16019,16 @@ let BattleMovedex = {
 		pp: 15,
 		priority: 0,
 		flags: {protect: 1},
-		onHit: function (pokemon, source, move) {
-			this.add('-activate', source, 'move: Sparkly Swirl');
-			let success = false;
-			for (const ally of pokemon.side.pokemon) {
-				if (ally !== source && (ally.volatiles['substitute'] && !move.infiltrates)) {
-					continue;
+		self: {
+			onHit: function (pokemon, source, move) {
+				this.add('-activate', source, 'move: Aromatherapy');
+				for (const ally of source.side.pokemon) {
+					if (ally !== source && (ally.volatiles['substitute'] && !move.infiltrates)) {
+						continue;
+					}
+					ally.cureStatus();
 				}
-				if (ally.cureStatus()) success = true;
-			}
-			return success;
+			},
 		},
 		secondary: null,
 		target: "normal",
@@ -18468,7 +18471,7 @@ let BattleMovedex = {
 		contestType: "Cool",
 	},
 	"veeveevolley": {
-		num: 732,
+		num: 741,
 		accuracy: true,
 		basePower: 0,
 		basePowerCallback: function (pokemon) {
